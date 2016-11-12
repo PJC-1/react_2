@@ -13,7 +13,7 @@ var TodoComponent = React.createClass({
 
           </div>
       );
-    }
+    }// render
 });
 
 var myCheese = {name: 'Camembert', smellFactor: 'Extreme pong', price: '3.50'};
