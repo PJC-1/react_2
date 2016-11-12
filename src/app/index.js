@@ -8,10 +8,11 @@ var TodoComponent = React.createClass({
         <div>
           <h1>hello</h1>
           <p>world</p>
+          <p>{this.props.mssg}</p>
         </div>
       );
     }
 });
 
 // put component into html page
-ReactDOM.render(<TodoComponent />, document.getElementById('todo-wrapper'));
+ReactDOM.render(<TodoComponent mssg="I like cheese"/>, document.getElementById('todo-wrapper'));
