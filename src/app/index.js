@@ -1,18 +1,23 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-// Create component
+
 var TodoComponent = React.createClass({
     render: function(){
       return(
-        <div>
-          <h1>hello</h1>
-          <p>world</p>
-          <p>{this.props.mssg}</p>
-        </div>
+          <div>
+              <p><strong>Cheese name: </strong> {this.props.cheese.name}</p>
+              <p><strong>Cheese smell factor: </strong> {this.props.cheese.smellFactor}</p>
+              <p><strong>Cheese price: </strong> {this.props.cheese.price}</p>
+
+
+          </div>
       );
     }
 });
 
-// put component into html page
-ReactDOM.render(<TodoComponent mssg="I like cheese"/>, document.getElementById('todo-wrapper'));
+var myCheese = {name: 'Camembert', smellFactor: 'Extreme pong', price: '3.50'};
+
+// we add props into a component here in the 'component tag' and then we can
+// reference them from within the component above.
+ReactDOM.render(<TodoComponent mssg="I like cheese" cheese={myCheese}/>, document.getElementById('todo-wrapper'));
