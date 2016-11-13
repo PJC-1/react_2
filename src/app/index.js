@@ -27,6 +27,8 @@ var TodoComponent = React.createClass({
     // Custom functions
     onDelete: function(item){
       var updatedTodos = this.state.todos.filter(function(val, index){
+        console.log("item: " + item + " value: " + val);
+        console.log("item !== val ", item !== val);
         return item !== val;
       });
       this.setState({
