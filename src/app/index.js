@@ -5,8 +5,7 @@ var ReactDOM = require('react-dom');
 var TodoComponent = React.createClass({
     getInitialState: function(){
         return {
-            todos: ['wash up', 'eat some cheese', 'take a nap', 'buy flowers'],
-            pokemon: ['palossand', 'alakazam', 'decidueye', 'vikavolt', 'alola nine-tails', 'mimikyu']
+            todos: ['wash up', 'eat some cheese', 'take a nap', 'buy flowers']
         }
     },
     render: function(){
@@ -14,27 +13,25 @@ var TodoComponent = React.createClass({
       var todos = this.state.todos;
       todos = todos.map(function(item,index){
         return(
-          <TodoItem item={item} key={index}/>
+          <TodoItem item={item} key={index} onDelete={this.onDelete}/>
         );
-      })
-      var pokemon = this.state.pokemon;
-      pokemon = pokemon.map(function(item,index){
-        return(
-          <PokemonItem item={item} key={index}/>
-        );
-      })
+      }.bind(this));
       return(
           <div id="todo-list">
               <p>The busiest people have the most leisure...</p>
               <ul>{todos}</ul>
-              <br></br>
-              <p onClick={this.clicked}>Pokemon I want to use in sun and moon...</p>
-              <ul>{pokemon}</ul>
           </div>
       );
     },// render
-    clicked: function(){
-      console.log('you clicked me');
+
+    // Custom functions
+    onDelete: function(item){
+      var updatedTodos = this.state.todos.filter(function(val, index){
+        return item !== val;
+      });
+      this.setState({
+        todos: updatedTodos
+      });
     }
 });
 
@@ -45,23 +42,16 @@ var TodoItem = React.createClass({
       <li>
           <div className="todo-item">
               <span className="item-name">{this.props.item}</span>
+              <span className="item-delete" onClick={this.handleDelete}> x </span>
           </div>
       </li>
     );
-  }// render
-});
+  },// render
 
-// create PokemonItem component
-var PokemonItem = React.createClass({
-  render: function(){
-    return(
-      <li>
-          <div className="pokemon-item">
-              <span className="item-name">{this.props.item}</span>
-          </div>
-      </li>
-    )
-  }// render
+  // Custom functions
+  handleDelete: function(){
+    this.props.onDelete(this.props.item);
+  }
 });
 
 // we add props into a component here in the 'component tag' and then we can
