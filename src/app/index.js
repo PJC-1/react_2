@@ -28,11 +28,14 @@ var TodoComponent = React.createClass({
               <p>The busiest people have the most leisure...</p>
               <ul>{todos}</ul>
               <br></br>
-              <p>Pokemon I want to use in sun and moon...</p>
+              <p onClick={this.clicked}>Pokemon I want to use in sun and moon...</p>
               <ul>{pokemon}</ul>
           </div>
       );
-    }// render
+    },// render
+    clicked: function(){
+      console.log('you clicked me');
+    }
 });
 
 // create TodoItem component
