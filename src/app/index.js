@@ -4,6 +4,7 @@ require('./css/index.css');
 
 // Module requires, enabled by webpack
 var TodoItem = require('./todoItem');
+var AddItem = require('./addItem');
 
 var TodoComponent = React.createClass({
     getInitialState: function(){
@@ -23,6 +24,7 @@ var TodoComponent = React.createClass({
           <div id="todo-list">
               <p>The busiest people have the most leisure...</p>
               <ul>{todos}</ul>
+              <AddItem />
           </div>
       );
     },// render
