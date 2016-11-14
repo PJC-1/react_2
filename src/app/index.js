@@ -13,7 +13,6 @@ var TodoComponent = React.createClass({
         }
     },
     render: function(){
-
       var todos = this.state.todos;
       todos = todos.map(function(item,index){
         return(
@@ -24,7 +23,7 @@ var TodoComponent = React.createClass({
           <div id="todo-list">
               <p>The busiest people have the most leisure...</p>
               <ul>{todos}</ul>
-              <AddItem />
+              <AddItem onAdd={this.onAdd}/>
           </div>
       );
     },// render
@@ -39,6 +38,13 @@ var TodoComponent = React.createClass({
       this.setState({
         todos: updatedTodos
       });
+    },
+    onAdd: function(item){
+      var updatedTodos = this.state.todos;
+      updatedTodos.push(item);
+      this.setState({
+        todos: updatedTodos
+      })
     }
 });
 
